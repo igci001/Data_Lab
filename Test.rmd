@@ -1,0 +1,70 @@
+
+---
+title: "DataLab Emirhan Igci"
+author: "Emirhan Igci"
+date: "2025-04-23"
+output:
+  html_document:
+    toc: true       # Inhaltsverzeichnis aktivieren
+    #toc_depth: 3    # Maximale Tiefe des Inhaltsverzeichnisses (optional)
+    toc_float: true # Inhaltsverzeichnis schwebend anzeigen (optional)
+    number_sections: true
+    code_folding: hide
+---
+
+The [R plugin](https://www.jetbrains.com/help/pycharm/r-plugin-support.html) for IntelliJ-based IDEs provides
+handy capabilities to work with the [R Markdown](https://www.jetbrains.com/help/pycharm/r-markdown.html) files.
+To [add](https://www.jetbrains.com/help/pycharm/r-markdown.html#add-code-chunk) a new R chunk,
+position the caret at any line or the code chunk, then click "+".
+
+The code chunk appears:
+```{r setup, include=FALSE}
+if(!require("dplyr")) {install.packages("dplyr"); library("dplyr")}
+if(!require("haven")) {install.packages("haven"); library("haven")}
+if(!require("tidyr")) {install.packages("tidyr"); library("tidyr")}
+if(!require("tibble")) {install.packages("tibble"); library("tibble")}
+if(!require("gridExtra")) {install.packages("gridExtra"); library("gridExtra")}
+if(!require("grid")) {install.packages("grid"); library("grid")}
+if(!require("plotly")) {install.packages("plotly"); library("plotly")}
+if(!require("caret")) {install.packages("caret"); library("caret")}
+if(!require("factoextra")) {install.packages("factoextra"); library("factoextra")}
+if(!require("randomForest")) {install.packages("randomForest"); library("randomForest")}
+
+library(ggplot2)
+set.seed(24032003)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+``` {r globalFunc, include=FALSE}
+summary<-function(x){
+  head(x)
+
+}
+```
+# Einleitung und Zielsetzung
+
+
+
+Type any R code in the chunk, for example:
+```{r loadData, echo=FALSE}
+library(haven)
+
+# Cross Section Nation wide
+cross_section_hk <- read_dta("./cross_section/CampusFile_HK_2023.dta")
+cross_section_wk <- read_dta("./cross_section/CampusFile_WK_2023.dta")
+cross_section_wm <- read_dta("./cross_section/CampusFile_WM_2023.dta")
+
+# Top 12 Cities
+panel_hk <- read_dta("./panel/CampusFile_HK_cities.dta")
+panel_wk <- read_dta("./panel/CampusFile_WK_cities.dta")
+panel_wm <- read_dta("./panel/CampusFile_WM_cities.dta")
+
+```
+```{r dataToDF}
+cs_hk_df <- data.frame(cross_section_hk)
+cs_hk_df <- data.frame(cross_section_hk)
+cs_hk_df <- data.frame(cross_section_hk)
+```
+
+Now, click the **Run** button on the chunk toolbar to [execute](https://www.jetbrains.com/help/pycharm/r-markdown.html#run-r-code) the chunk code. The result should be placed under the chunk.
+Click the **Knit and Open Document** to build and preview an output.
